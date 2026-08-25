@@ -36,7 +36,7 @@ var ErrIllegalMove = errors.New("checkers: illegal move")
 // Start is the standard opening position.
 func Start() Board {
 	var b Board
-	for s := 0; s < 12; s++ {
+	for s := range 12 {
 		b[s] = 1 // black men
 	}
 	for s := 20; s < 32; s++ {
@@ -109,7 +109,7 @@ func promotionRow(s Side) int8 {
 // only (complete) capture paths are returned.
 func LegalMoves(b Board, side Side) []Move {
 	var jumps, simples []Move
-	for s := int8(0); s < 32; s++ {
+	for s := range int8(32) {
 		pieceSide, occupied := sideOf(b[s])
 		if !occupied || pieceSide != side {
 			continue
